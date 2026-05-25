@@ -14,10 +14,9 @@ Here you will find a step-by-step technical guide on how to set up your environm
 1. 📋 **Requirements**:
 
 - [Git](https://git-scm.com/downloads)
-- [Python](https://www.python.org/downloads/) (3.13+)
+- [Python](https://www.python.org/downloads/latest/python3.13)
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- [Java](https://adoptium.net/temurin/releases?version=25&os=any&arch=any) (JDK 25+)
-> For Termux users, just use: `pkg install git python uv openjdk-25`
+- [Java](https://adoptium.net/temurin/releases?version=21&os=any&arch=any)
 
 2. 📥 **Installation**:
 
@@ -26,15 +25,15 @@ git clone --depth 1 https://github.com/krvstek/uni-apks.git
 cd uni-apks
 ```
 
-No further setup needed - `uv` handles the Python environment and dependencies automatically.
+No further setup needed, as `uv` handles the Python environment and dependencies automatically.
 
 3. ▶️ **Running**:
 
 ```bash
-uv run main.py                    # build all apps
-uv run main.py SomeApp            # build a specific app
-uv run main.py SomeApp arm64-v8a  # build with arch override
-uv run main.py clear              # remove build/, temp/ and build.md
+uv run main.py # build all apps
+uv run main.py SomeApp # build a specific app
+uv run main.py SomeApp arm64-v8a # build with arch override
+uv run main.py clear # remove build/, temp/ and build.md
 ```
 
 Output APKs are saved to `build/`.
@@ -46,8 +45,8 @@ All configuration lives in `config.toml` in the project root. Top-level keys def
 ```toml
 [SomeApp]
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inc/app"
-# or uptodown-dlurl = "https://app.en.uptodown.com/android"
-# or github-dlurl = "https://github.com/<owner>/<repo>/releases/tag/app"
+# uptodown-dlurl = "https://app.en.uptodown.com/android"
+# github-dlurl = "https://github.com/<owner>/<repo>/releases/tag/app"
 ```
 
 1. 📱 **Available options**:
@@ -128,9 +127,9 @@ To encode an existing keystore:
 base64 -w 0 my.keystore
 ```
 
-On **GitHub Actions**, set `KEYSTORE_BASE64` and `KEYSTORE_PASS` as repository secrets under **Settings → Secrets and variables → Actions** instead of a `.env` file - they are passed to the build automatically.
+On **GitHub Actions**, set `KEYSTORE_BASE64` and `KEYSTORE_PASS` as repository secrets under **Settings → Secrets and variables → Actions** instead of a `.env` file, as they are passed to the build automatically.
 
-If no keystore is configured, `morphe.keystore` is used as a fallback if it exists in the project root. If neither is present, the CLI signs with its built-in debug keystore - on **GitHub Actions** this means every release will have a different signature, making app updates **impossible**.
+If no keystore is configured, `morphe.keystore` is used as a fallback if it exists in the project root. If neither is present, the CLI signs with its built-in debug keystore. On **GitHub Actions** this means every release will have a different signature, making app updates **impossible**.
 
 ## 🤝 Contributing
 
@@ -140,11 +139,11 @@ For bugs in the **build script itself**, use the [Script Bug Report](https://git
 
 2. **💡 Suggestions**:
 
-Feature ideas belong in the [Discussions](https://github.com/krvstek/uni-apks/discussions) tab - this keeps the issue tracker focused on bugs.
+Feature ideas belong in the [Discussions](https://github.com/krvstek/uni-apks/discussions) tab, as this keeps the issue tracker focused on bugs.
 
 3. **🛠️ Pull Requests**:
 
-Pull requests are welcome. AI-assisted contributions are accepted, but all changes must be manually reviewed before submitting - you are responsible for every line you put your name on. I reserve the right to reject any contribution that does not align with the project's vision.
+Pull requests are welcome. AI-assisted contributions are accepted, but all changes must be manually reviewed before submitting, as you are responsible for every line you put your name on. I reserve the right to reject any contribution that does not align with the project's vision.
 
 ---
 
