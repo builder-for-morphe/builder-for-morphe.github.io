@@ -112,17 +112,27 @@
             svgPath: "M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
           }
         };
+        const searchHtml = `
+          <div class="markdown-alert markdown-alert-important" style="margin-bottom: 16px;">
+            <p class="markdown-alert-title">
+              <svg class="${alertConfig.important.iconClass}" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="${alertConfig.important.svgPath}"></path></svg>${alertConfig.important.title}
+            </p>
+            <p>▶️ » Install <a id="microg-link" href="https://github.com/MorpheApp/MicroG-RE/releases" target="_blank">MicroG-RE</a> to enable Google account sign-in for supported apps</p>
+          </div>
+          <input type="text" id="search-input" style="width: 100%; max-width: 350px; margin-bottom: 10px;" placeholder="🔍 Search apps" />
+        `;
+
         let processedText = markdownText
-          .replace("<!-- search-bar -->", '<input type="text" id="search-input" style="width: 100%; max-width: 300px; margin-bottom: 10px;" placeholder="🔍 Search apps" />')
+          .replace("<!-- search-bar -->", searchHtml)
           .replace(/\u3000/g, "&#x3000;")
           .replace(/\u2002/g, "&#x2002;")
           .replace(/\u2003/g, "&#x2003;")
           .replace(/^> \[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\][ \t]*\r?\n((?:>.*(?:\r?\n|$))+)/gim, (match, type, p1) => {
-          const config = alertConfig[type.toLowerCase()];
-          let cleanText = p1.replace(/^>\s?/gm, "");
-          let htmlContent = marked.parse(cleanText);
-          return `<div class="markdown-alert markdown-alert-${type.toLowerCase()}">\n<p class="markdown-alert-title"><svg class="${config.iconClass}" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="${config.svgPath}"></path></svg>${config.title}</p>\n${htmlContent}</div>\n`;
-        });
+            const config = alertConfig[type.toLowerCase()];
+            let cleanText = p1.replace(/^>\s?/gm, "");
+            let htmlContent = marked.parse(cleanText);
+            return `<div class="markdown-alert markdown-alert-${type.toLowerCase()}">\n<p class="markdown-alert-title"><svg class="${config.iconClass}" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="${config.svgPath}"></path></svg>${config.title}</p>\n${htmlContent}</div>\n`;
+          });
 
         const contentEl = document.getElementById("content");
         contentEl.innerHTML = marked.parse(processedText);
@@ -166,22 +176,33 @@
           });
         }
 
+        fetch("https://api.github.com/repos/MorpheApp/MicroG-RE/releases/latest")
+          .then(res => res.json())
+          .then(release => {
+            const asset = (release.assets || []).find(x => x.name.endsWith('.apk'));
+            if (asset) {
+              const microgLink = document.getElementById("microg-link");
+              if (microgLink) microgLink.href = asset.browser_download_url;
+            }
+          })
+          .catch(error => console.warn("Error fetching MicroG release:", error));
+
         fetch("https://api.github.com/repos/builder-for-morphe/builder-for-morphe.github.io/releases?per_page=100")
           .then(res => res.json())
           .then(releases => {
-            for (const a of contentEl.querySelectorAll('a[href*="#patch="]')) {
+            for (const a of contentEl.querySelectorAll('a[href*="#tag="]')) {
               const url = new URL(a.href);
               const params = new URLSearchParams(url.hash.substring(1));
-              const patch = params.get('patch');
+              const tagMatch = params.get('tag');
               const assetMatch = params.get('asset');
 
-              if (!patch || !assetMatch) continue;
-              const patchStr = patch.toLowerCase();
-              const matchStr = assetMatch.toLowerCase();
+              if (!tagMatch || !assetMatch) continue;
+              const tagMatchStr = tagMatch.toLowerCase();
+              const assetMatchStr = assetMatch.toLowerCase();
 
               for (const r of releases) {
-                if (r.tag_name && r.tag_name.toLowerCase().endsWith(patchStr)) {
-                  const asset = (r.assets || []).find(x => x.name.toLowerCase().includes(matchStr) && x.name.endsWith('.apk'));
+                if (r.tag_name && r.tag_name.toLowerCase().endsWith(tagMatchStr)) {
+                  const asset = (r.assets || []).find(x => x.name.toLowerCase().includes(assetMatchStr) && x.name.endsWith('.apk'));
                   if (asset) {
                     a.href = asset.browser_download_url;
                     break;
