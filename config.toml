@@ -26,7 +26,7 @@ uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 "github:MorpheApp/morphe-patches" = []
 
 [YouTube-Experimental]
-enabled = false
+enabled = true
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube"
 uptodown-dlurl = "https://youtube.en.uptodown.com/android"
 version = "21.25.523"
@@ -36,7 +36,7 @@ patcher-args = "-e 'Change header' -Ocustom=icons/YouTube/header -e 'Custom bran
 "github:MorpheApp/morphe-patches" = []
 
 [YT-Music-Experimental]
-enabled = false
+enabled = true
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music"
 uptodown-dlurl = "https://youtube-music.en.uptodown.com/android"
 arch = "both"
@@ -47,7 +47,7 @@ patcher-args = "-e 'Change header' -Ocustom=icons/Music/header -e 'Custom brandi
 "github:MorpheApp/morphe-patches" = []
 
 [Reddit-Experimental]
-enabled = false
+enabled = true
 apkmirror-dlurl = "https://www.apkmirror.com/apk/redditinc/reddit"
 uptodown-dlurl = "https://reddit-official-app.en.uptodown.com/android"
 version = "2026.25.0"
@@ -514,16 +514,6 @@ changelog-keywords = ["AdGuard"]
 [AdGuard_rushi.patches]
 "github:rushiranpise/morphe-patches" = []
 
-[Cube-ACR]
-enabled = true
-brand = "rushi"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/cube-apps-limited/call-recorder-cube-acr/"
-uptodown-dlurl = "https://cube-acr.en.uptodown.com/android"
-changelog-keywords = ["Cube ACR", "Call Recorder"]
-
-[Cube-ACR.patches]
-"github:rushiranpise/morphe-patches" = []
-
 [Clickmate]
 enabled = true
 brand = "rushi"
@@ -544,7 +534,7 @@ changelog-keywords = ["CPU"]
 "github:rushiranpise/morphe-patches" = []
 
 [Cube-ACR]
-enabled = false
+enabled = true
 brand = "rushi"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/cube-apps-limited/call-recorder-cube-acr/"
 uptodown-dlurl = "https://cube-acr.en.uptodown.com/android"
@@ -686,7 +676,7 @@ changelog-keywords = ["Windscribe"]
 "github:rushiranpise/morphe-patches" = []
 
 [Adobe-Acrobat-Reader] 
-enabled = false
+enabled = true
 brand = "hooman"
 github-dlurl = "https://github.com/nvbangg/builder-for-morphe/releases/tag/com.adobe.reader"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/adobe-acrobat/"
@@ -697,7 +687,7 @@ changelog-keywords = ["Acrobat"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [BandLab]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/bandlab/bandlab-music-making-studio/"
 uptodown-dlurl = "https://bandlab.en.uptodown.com/android"
@@ -707,7 +697,7 @@ changelog-keywords = ["BandLab"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [Finch]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/finch-care-inc/finch-self-care-widget-pet/"
 uptodown-dlurl = "https://finch.en.uptodown.com/android"
@@ -717,7 +707,7 @@ changelog-keywords = ["Finch"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [InShot]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/inshot-inc/inshot-video-editor-photo-editor/"
 uptodown-dlurl = "https://inshot-editor.en.uptodown.com/android"
@@ -727,7 +717,7 @@ changelog-keywords = ["InShot"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [Money-Manager]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/realbyte-inc/money-manager-expense-budget/"
 uptodown-dlurl = "https://money-manager.en.uptodown.com/android"
@@ -737,7 +727,7 @@ changelog-keywords = ["Money Manager"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [Quizlet]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/quizlet-inc/quizlet-learn-languages-vocab-with-flashcards/"
 uptodown-dlurl = "https://quizlet.en.uptodown.com/android"
@@ -747,7 +737,7 @@ changelog-keywords = ["Quizlet"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [Rumble]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/rumble/rumble/"
 uptodown-dlurl = "https://rumble.en.uptodown.com/android"
@@ -757,7 +747,7 @@ changelog-keywords = ["Rumble"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [Tumblr_hooman]
-enabled = false
+enabled = true
 app-name = "Tumblr"
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/tumblr-inc/tumblr/"
@@ -768,7 +758,7 @@ changelog-keywords = ["Tumblr"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [Twitch]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/twitch-interactive-inc/twitch/"
 uptodown-dlurl = "https://twitch.en.uptodown.com/android"
@@ -778,7 +768,7 @@ changelog-keywords = ["Twitch"]
 "github:arandomhooman/hoomans-morphe-patches" = []
 
 [WEBTOON]
-enabled = false
+enabled = true
 brand = "hooman"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/naver-webtoon/line-webtoon-free-comics/"
 uptodown-dlurl = "https://webtoon.en.uptodown.com/android"
@@ -967,22 +957,14 @@ uptodown-dlurl = "https://tiktok.en.uptodown.com/android"
 [TikTok.patches]
 "github:RookieEnough/De-Vanced" = []
 
-[Tumblr]
+[Tumblr_de-vanced]
+app-name = "Tumblr"
 enabled = true
 brand = "de-vanced"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/tumblr-inc/tumblr/"
 uptodown-dlurl = "https://tumblr.en.uptodown.com/android"
 
-[Tumblr.patches]
-"github:RookieEnough/De-Vanced" = []
-
-[Twitch]
-enabled = true
-brand = "de-vanced"
-apkmirror-dlurl = "https://www.apkmirror.com/apk/twitch-interactive-inc/twitch/"
-uptodown-dlurl = "https://twitch.en.uptodown.com/android"
-
-[Twitch.patches]
+[Tumblr_de-vanced.patches]
 "github:RookieEnough/De-Vanced" = []
 
 [Viber]
